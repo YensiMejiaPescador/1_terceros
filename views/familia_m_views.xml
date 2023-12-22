@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<odoo> 
+<!-- Comentario en la Views --> 
+     <record id="view_familia_m_form" model="ir.ui.view">
+        <field name="name">familia.m.form</field>
+        <field name="model">familia.m</field>
+        <field name="arch" type="xml"> 
+            <form string="M List">
+                <group>
+                    <group>
+                        <field name="name"/>
+                        <field name="last_name"/>
+                    </group>
+                     <group>
+                        <field name="age"/>
+                        <field name="relationship"/>
+                    </group>
+                </group>
+            </form> 
+        </field> 
+    </record> 
+     <record id="view_tree_familia_m" model="ir.ui.view">
+        <field name="name">familia.m.tree</field>
+        <field name="model">familia.m</field>
+        <field name="arch" type="xml"> 
+           <tree> 
+                    <field name="name" optional="show"/>
+                    <field name="last_name"/>
+                    <field name="age"/>
+                    <field name="relationship"/>
+           </tree> 
+        </field> 
+    </record> 
+    <record model="ir.actions.act_window" id="act_familia_m">
+        <field name="name">familia</field>
+        <field name="res_model">familia.m</field>
+        <field name="view_mode">tree,form</field> 
+        <field name="view_id"  ref="view_tree_familia_m"/>
+    </record> 
+<!--  Declaramos los menu --> 
+<menuitem id="familia_m_menu" name="Familia" web_icon="stock,static/description/icon.png" sequence="10"/> 
+<menuitem id="submenu_familia_m_menu" name="Familia" sequence="10" parent="familia_m_menu"/> 
+<menuitem id="submenu_familia_m_action" name="Familia" sequence="10" parent="submenu_familia_m_menu" action="act_familia_m"/>
+</odoo> 
